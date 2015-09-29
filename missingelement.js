@@ -1,4 +1,6 @@
-, j;
+var ref = [];
+var arr = [2,3,4];
+var max = 6, i, j;
 
 for (i =0; i < max; i++) 
 {
@@ -16,4 +18,4 @@ for (i = 0; i < arr.length; i++)
 	}
 }
 
-alert('missing numbers are ' + ref;
+alert('missing numbers are ' + ref);

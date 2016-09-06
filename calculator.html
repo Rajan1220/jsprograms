@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calculator</title>
+    <script type="text/javascript">
+      function cal(e) {
+        var operator = document.getElementById(e.id).value;
+        //alert(operator);
+        var FirstNo = document.getElementById("first-no").value;
+        var SecondNo = document.getElementById("second-no").value;
+        var res = eval(FirstNo +operator +SecondNo);
+        //alert(res);
+        //return res;
+        document.getElementById("result").value = res;
+      }
+      
+      function resetall() {
+        document.getElementById("first-no").value="";
+        document.getElementById("second-no").value="";
+        document.getElementById("result").value="";
+      }
+      // To enter only numeric values on key press.
+      function NumberOnly(keyCode) {
+        // 0-9 ASCII values is 48-57 ,Num0-Num9 ASCII value is 96-105 and Backspace has ASCII value 8.
+        return ((keyCode >= 48 && keyCode <= 57) || keyCode == 8 || (keyCode >= 96 && keyCode <= 105));
+      }
+    </script>
+  </head>
+  <body>
+    <label>First No:</label>
+    <input type="text" name="first-no" id="first-no" placeholder="Enter number" onkeydown = "return NumberOnly(event.keyCode);" /></br>
+    <label>Second No:</label>
+    <input type="text" name="second-no" id="second-no" placeholder="Enter number" onkeydown = "return NumberOnly(event.keyCode);"/></br>
+    <input id="sum" type="button" value="+" onclick='cal(this)' />
+    <input id="sub" type="button" value="-" onclick='cal(this)' />
+    <input id="mul" type="button" value="*" onclick='cal(this)' />
+    <input id="div" type="button" value="/" onclick='cal(this)' />
+    <input type="button" name="rest" value="Rest All" onclick="resetall()" />
+    Result is:<input type="text" name="result" id="result"/>
+  </body>
+</html>

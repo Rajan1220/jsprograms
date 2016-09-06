@@ -3,23 +3,21 @@
   <head>
     <title>Calculator</title>
     <script type="text/javascript">
+      // Function to perform arithmetic operations (+,-,*,/).
       function cal(e) {
         var operator = document.getElementById(e.id).value;
-        //alert(operator);
         var FirstNo = document.getElementById("first-no").value;
         var SecondNo = document.getElementById("second-no").value;
         var res = eval(FirstNo +operator +SecondNo);
-        //alert(res);
-        //return res;
         document.getElementById("result").value = res;
       }
-      
+      // Function to clear textboxes.
       function resetall() {
         document.getElementById("first-no").value="";
         document.getElementById("second-no").value="";
         document.getElementById("result").value="";
       }
-      // To enter only numeric values on key press.
+      // Function to enter only numeric values and checkes on key press.
       function NumberOnly(keyCode) {
         // 0-9 ASCII values is 48-57 ,Num0-Num9 ASCII value is 96-105 and Backspace has ASCII value 8.
         return ((keyCode >= 48 && keyCode <= 57) || keyCode == 8 || (keyCode >= 96 && keyCode <= 105));

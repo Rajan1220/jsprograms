@@ -9,22 +9,23 @@
     </style>
     <script type="text/javascript">
       function GetTabaleDetails() {
-       var tbl = document.getElementById("getTableData"); 
-       if (tbl != null) {
-
-            for (var i = 0; i < tbl.rows.length; i++) {
-
-                for (var j = 0; j < tbl.rows[i].cells.length; j++)
-
-                    tbl.rows[i].cells[j].onclick = function () { getval(this); };
-
-            }
-
-        }
-        function getval(cel) {
-
-            console.log(cel.innerHTML);
-
+        //gets table
+        var oTable = document.getElementById('getTableData');
+        //gets rows of table
+        var rowLength = oTable.rows.length;
+        alert(rowLength);
+        //loops through rows    
+        for (i = 0; i < rowLength; i++){
+          //gets cells of current row  
+          var oCells = oTable.rows.item(i).cells;
+          //gets amount of cells of current row
+          var cellLength = oCells.length;
+          //loops through each cell in current row
+          for(var j = 0; j < cellLength; j++){
+            // get your cell info here
+            var cellVal = oCells.item(j).innerHTML;
+            alert(cellVal);
+          }
         } 
       }  
     </script>
@@ -48,6 +49,6 @@
       	<td>Cell6</td>
       </tr>
     </table>
-    <input type="button" id="addRowToTable" value="Add Row !" onclick="return GetTabaleDetails(this)" />
+    <input type="button" id="addRowToTable" value="Add Row !" onclick="return GetTabaleDetails()" />
   </body>
 </html>

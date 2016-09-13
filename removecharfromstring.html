@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Remove Character from string</title>
+    <script type="text/javascript">
+      function CharRemoveFromString(e) {
+        var UserString = document.getElementById("inputstringbox").value;
+        var pattrn = new RegExp(UserString, "g");
+        alert(pattrn);
+        var res = pattrn.toString();
+        console.log(res);
+        var CharRemove = document.getElementById("inputcharbox").value 
+        alert(CharRemove);
+
+      }
+    </script>
+  </head>
+  <body>
+    <input type="text" id="inputstringbox" placeholder="Enter String" onchange="CharRemoveFromString(this)" />
+    <input type="text" id="inputcharbox" placeholder="Enter Characters to be removed" onchange="CharRemoveFromString(this)" /><br/>
+    <input type="button" id="removecharbtn" value="Click Here To Remove Characters !" />
+    <label id="remainingstring"></label>
+
+  </body>
+</html>

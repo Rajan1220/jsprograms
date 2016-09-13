@@ -29,10 +29,10 @@
         } 
       }  
     function AddRowToTable() {
-      var table = document.getElementById("myTable");
+      var table = document.getElementById("getTableData");
       var rowLength = table.rows.length;
-      var row = table.insertRow(0);
-      alert(row);
+      var row = table.insertRow(rowLength);
+      //alert(row);
       var cell1 = row.insertCell(0);
       var cell2 = row.insertCell(1);
       cell1.innerHTML = "CELL- X";

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Table Operations</title>
+    <style type="text/css">
+      table, td, th {
+        border: 1px solid black;
+      }
+    </style>
+    <script type="text/javascript">
+      function GetTabaleDetails() {
+       var tbl = document.getElementById("getTableData"); 
+       if (tbl != null) {
+
+            for (var i = 0; i < tbl.rows.length; i++) {
+
+                for (var j = 0; j < tbl.rows[i].cells.length; j++)
+
+                    tbl.rows[i].cells[j].onclick = function () { getval(this); };
+
+            }
+
+        }
+        function getval(cel) {
+
+            console.log(cel.innerHTML);
+
+        } 
+      }  
+    </script>
+  </head>
+  <body>
+    <table id="getTableData">
+      <tr>
+        <th>Column1</th>
+        <th>Column2</th>
+      </tr>
+      <tr>
+      	<td>Cell1</td>
+      	<td>Cell2</td>
+      </tr>
+      <tr>
+      	<td>Cell3</td>
+      	<td>Cell4</td>
+      </tr>
+      <tr>
+      	<td>Cell5</td>
+      	<td>Cell6</td>
+      </tr>
+    </table>
+    <input type="button" id="addRowToTable" value="Add Row !" onclick="return GetTabaleDetails(this)" />
+  </body>
+</html>

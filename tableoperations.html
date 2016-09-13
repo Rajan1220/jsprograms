@@ -8,35 +8,34 @@
       }
     </style>
     <script type="text/javascript">
-      function GetTabaleDetails() {
-        //gets table
-        var oTable = document.getElementById('getTableData');
-        //gets rows of table
-        var rowLength = oTable.rows.length;
-        alert(rowLength);
-        //loops through rows    
-        for (i = 0; i < rowLength; i++){
-          //gets cells of current row  
-          var oCells = oTable.rows.item(i).cells;
-          //gets amount of cells of current row
-          var cellLength = oCells.length;
-          //loops through each cell in current row
-          for(var j = 0; j < cellLength; j++){
-            // get your cell info here
-            var cellVal = oCells.item(j).innerHTML;
-            alert(cellVal);
+      function AddRowToTable() {
+        var table = document.getElementById("getTableData");
+        var rowLength = table.rows.length;
+        var row = table.insertRow(rowLength);
+        //alert(row);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        cell1.innerHTML = "CELL- X";
+        cell2.innerHTML = "CELL- Y";
+      }
+      function EditTableCell() {
+        var RowNumber = prompt("Please row number to be edit");
+        //alert(UserRespons);
+        if(RowNumber) {;
+          var ColunmNumber = prompt("Please Column number for row" +' '+RowNumber +' '+ "to be edit");
+          if(ColunmNumber) {
+            /*var CellInfo = document.getElementById("getTableData").rows[0].cells[0].innerHTML;
+            alert(CellInfo);*/
+            var CellData = document.getElementById("getTableData").rows[RowNumber].cells[ColunmNumber].innerHTML;
+            //alert(CellData);
+            var NewCellData = prompt("Enter new cell data");
+            //alert(NewCellData);
+            document.getElementById("getTableData").rows[RowNumber].cells[ColunmNumber].innerHTML = NewCellData ;
           }
-        } 
-      }  
-    function AddRowToTable() {
-      var table = document.getElementById("myTable");
-      var rowLength = table.rows.length;
-      var row = table.insertRow(0);
-      alert(row);
-      var cell1 = row.insertCell(0);
-      var cell2 = row.insertCell(1);
-      cell1.innerHTML = "CELL- X";
-      cell2.innerHTML = "CELL- Y";
+        }
+        else {
+          document.write('this is cancl');
+      }
     }
     </script>
   </head>
@@ -60,5 +59,6 @@
       </tr>
     </table>
     <input type="button" id="addRowToTable" value="Add Row !" onclick="return AddRowToTable()"/>
+    <input type="button" id="userRequest" value="Edit Cell" onclick="return EditTableCell()">
   </body>
 </html>

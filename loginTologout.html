@@ -4,12 +4,60 @@
     <meta charset="UTF-8">
     <title>Login To Logout</title>
     <script type="text/javascript">
+      function SetUserName() {
+        var LogUser = document.forms["loginForm"]["loginName"].value;
+        var LogEmail = document.forms["loginForm"]["emailId"].value;
+        '<%Session["UserName"] = "' + LogUser + '"; %>';
+        '<%Session["Email"] = "' + LogEmail + '"; %>';
+        alert('<%=Session["UserName"] %>');
+        alert('<%=Session["Email"] %>');
+      }
+      // check email must contain '@' and '.' characters.
+      function checkmail() {
+        var LogEmail = document.forms["loginForm"]["emailId"].value;
+        var atpos = LogEmail.indexOf("@");
+        var dotpos = LogEmail.lastIndexOf(".");
+        if (atpos<1 || dotpos<atpos+2 || dotpos+2>=LogEmail.length) {
+          alert("Not a valid e-mail address");
+          document.getElementById("EmailID").focus();
+          return false;
+        }
+      }	
+      function verify() {
+      	var i;
+      	var LogUser = document.forms["loginForm"]["loginName"].value;
+      	var LogEmail = document.forms["loginForm"]["emailId"].value;
+      	var LogPass = document.forms["loginForm"]["loginPass"].value;
+      	var ConfirmLogPass = document.forms["loginForm"]["confirmloginPass"].value;
+      	if(LogUser == null || LogUser == "", LogEmail == null || LogEmail == "", LogPass == null || LogPass == "", ConfirmLogPass == null || ConfirmLogPass == "" ) {
+      		alert('Please Fill All Fileds');
+      		return false;
+      	}
+      	if((LogUser == 'test') && (LogPass == '123')) {
+          //window.open('UserDetailPage.html');
+          if(LogPass != ConfirmLogPass) {
+            alert('Your password do not match. Please try again !');
+            //document.forms["loginForm"]["confirmloginPass"].value.focus();
+            ConfirmLogPass.focus();
+            return false;
+          }
+          else {
+            var url = "http://localhost/jsprograms/UserDetailPage.html";
+            window.location.href = url; 
+            return false;
+          }
+        }
+        
+      }
       // Function to validate login name and password.
       function validateLoginForm() {
       	var LogUser = document.forms["loginForm"]["LoginName"].value;
       	var LogPass = document.forms["loginForm"]["loginPass"].value;
         if((LogUser=='test') && (LogPass=='123')) {
-        	window.open('UserDetailPage.html');
+          //window.open('UserDetailPage.html');
+          var url = "http://localhost/jsprograms/UserDetailPage.html";
+          window.location.href = url; 
+          return false;
         }
       }
 
@@ -22,10 +70,12 @@
   <body>
     <fieldset>
       <legend>Please Login Here</legend>
-      <form name="loginForm" id="LoginForm" method="POST">      
+      <form name="loginForm" id="LoginForm" onsubmit="return verify()" >      
         <label>Login Name</label><input type="text" name="loginName" id="LoginName" />
-        <label>Password</label><input type="password" name="loginPass" id="loginPass" />
-        <input type="submit" name="submitBt" value="LogIn" onclick="return validateLoginForm()" />
+        <label>E-mail Address</label><input type="text" name="emailId" id="EmailID" autocomplete='off' onchange="return checkmail()" />
+        <label>Password</label><input type="password" name="loginPass" id="LoginPass" />
+        <label>Confirm Password</label><input type="password" name="confirmloginPass" id="ConfirmLoginPass" />
+        <input type="submit" name="submitBt" value="LogIn" />
         <input type="reset" name="reset" id="reset" value="Reset" />
         <input type="button" name="abort" value="Abort" onclick="return Abort()" />
       </form> 

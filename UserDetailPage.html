@@ -2,8 +2,14 @@
 <html>
 <head>
 	<title>User Detail Page</title>
+	<script type="text/javascript">
+    function GetUserName() {
+      var username = '<%= Session["UserName"] %>';
+      alert(username );
+    }
+</script>
 </head>
 <body>
-  welcome !
+  <input type="text" name="Logname" onfocus="return GetUserName()">
 </body>
 </html>

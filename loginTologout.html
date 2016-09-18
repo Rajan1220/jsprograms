@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Login To Logout</title>
+    <script type="text/javascript">
+      // Function to validate login name and password.
+      function validateLoginForm() {
+      	var LogUser = document.forms["loginForm"]["LoginName"].value;
+      	var LogPass = document.forms["loginForm"]["loginPass"].value;
+        if((LogUser=='test') && (LogPass=='123')) {
+        	window.open('UserDetailPage.html');
+        }
+      }
+
+      // Function if user Abort login process.
+      function Abort() {
+        history.back();
+      }
+    </script>
+  </head>
+  <body>
+    <fieldset>
+      <legend>Please Login Here</legend>
+      <form name="loginForm" id="LoginForm" method="POST">      
+        <label>Login Name</label><input type="text" name="loginName" id="LoginName" />
+        <label>Password</label><input type="password" name="loginPass" id="loginPass" />
+        <input type="submit" name="submitBt" value="LogIn" onclick="return validateLoginForm()" />
+        <input type="reset" name="reset" id="reset" value="Reset" />
+        <input type="button" name="abort" value="Abort" onclick="return Abort()" />
+      </form> 
+    </fieldset>
+  </body>
+</html>

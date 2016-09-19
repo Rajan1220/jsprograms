@@ -4,9 +4,12 @@
 	<title>User Detail Page</title>
 	<script type="text/javascript">
     function GetUserName() {
-      var username = '<%= Session["UserName"] %>';
-      alert(username );
+      /*var username = '<%= Session["UserName"] %>';
+      alert(username );*/
+      var x = readCookie('ppkcookie1');
+      alert(x);
     }
+
 </script>
 </head>
 <body>

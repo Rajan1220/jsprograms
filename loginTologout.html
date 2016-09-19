@@ -4,14 +4,36 @@
     <meta charset="UTF-8">
     <title>Login To Logout</title>
     <script type="text/javascript">
-      function SetUserName() {
+      function createCookie(name,value,days) {
+	if (days) {
+		var date = new Date();
+		date.setTime(date.getTime()+(days*24*60*60*1000));
+		var expires = "; expires="+date.toGMTString();
+	}
+	else var expires = "";
+	document.cookie = name+"="+value+expires+"; path=/UserDetailPage.html";
+}
+
+function readCookie(name) {
+	var nameEQ = name + "=";
+	var ca = document.cookie.split(';');
+	for(var i=0;i < ca.length;i++) {
+		var c = ca[i];
+		while (c.charAt(0)==' ') c = c.substring(1,c.length);
+		if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+	}
+	return null;
+}
+
+function eraseCookie(name) {
+	createCookie(name,"",-1);
+}
+      /*function SetUserName() {
         var LogUser = document.forms["loginForm"]["loginName"].value;
         var LogEmail = document.forms["loginForm"]["emailId"].value;
         '<%Session["UserName"] = "' + LogUser + '"; %>';
         '<%Session["Email"] = "' + LogEmail + '"; %>';
-        alert('<%=Session["UserName"] %>');
-        alert('<%=Session["Email"] %>');
-      }
+      }*/
       // check email must contain '@' and '.' characters.
       function checkmail() {
         var LogEmail = document.forms["loginForm"]["emailId"].value;
@@ -71,7 +93,7 @@
     <fieldset>
       <legend>Please Login Here</legend>
       <form name="loginForm" id="LoginForm" onsubmit="return verify()" >      
-        <label>Login Name</label><input type="text" name="loginName" id="LoginName" />
+        <label>Login Name</label><input type="text" name="loginName" id="LoginName" onchange="return createCookie('ppkcookie','testcookie',7)"/>
         <label>E-mail Address</label><input type="text" name="emailId" id="EmailID" autocomplete='off' onchange="return checkmail()" />
         <label>Password</label><input type="password" name="loginPass" id="LoginPass" />
         <label>Confirm Password</label><input type="password" name="confirmloginPass" id="ConfirmLoginPass" />

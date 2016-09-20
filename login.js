@@ -29,3 +29,9 @@ function verify() {
 function Abort() {
   history.back();
 }
+
+function getUserDetails() {
+  this.name = 'test';
+  this.email = 'test@tset.com';
+}
+

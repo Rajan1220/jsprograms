@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-	<script src="userdetail.js"></script> 
-</head>
-<body>
-welcome !
-<input type="button" name="" value="ClickMe" onclick="return person.fullName()">
-<input type="button" name="logout" value="Logout" />
-</body>
-</html>
+	<html>
+		<head>
+			<title></title>
+			<script src="userdetail.js"></script> 
+		</head>
+		<body>
+			welcome : Mr. <div id="loguser-name" style="position:relative; margin-left:120px; top: -19px;"></div>
+			Your Email is :<div id="loguser-email" style="position:relative; margin-left:130px;top: -19px;"></div>
+			Your Password is: <div id="loguser-pass" style="position:relative; margin-left:147px;top: -19px;"></div>
+			<input type="button" name="logout" value="Logout" onclick="return sessioclose()" />
+		</body>
+	</html>

@@ -71,18 +71,7 @@ function eraseCookie(name) {
         }
         
       }
-      // Function to validate login name and password.
-      function validateLoginForm() {
-      	var LogUser = document.forms["loginForm"]["LoginName"].value;
-      	var LogPass = document.forms["loginForm"]["loginPass"].value;
-        if((LogUser=='test') && (LogPass=='123')) {
-          //window.open('UserDetailPage.html');
-          var url = "http://localhost/jsprograms/UserDetailPage.html";
-          window.location.href = url; 
-          return false;
-        }
-      }
-
+      
       // Function if user Abort login process.
       function Abort() {
         history.back();

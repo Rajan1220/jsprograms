@@ -1,22 +1,21 @@
 <html>
-   <head>
-      
-      <script type="text/javascript">
-         <!--
-            function Redirect() {
-               window.location="userdetails.html";
-            }
-         //-->
-      </script>
-      
-   </head>
-   
-   <body>
-      <p>Click the following button, you will be redirected to home page.</p>
-      
-      <form>
-         <input type="button" value="Redirect Me" onclick="Redirect();" />
-      </form>
-      
-   </body>
+  <head>
+    <title>User Login</title>
+    <script src="login.js"></script> 
+  </head>
+  <body>
+    <div id="result"></div>
+    <fieldset>
+      <legend>Please Login Here</legend>
+      <form name="loginForm" id="LoginForm" onsubmit="return verify()" METHOD="LINK" ACTION="userdetails.html" >      
+        <label>Login Name</label><input type="text" name="loginName" id="LoginName" />
+        <label>E-mail Address</label><input type="text" name="emailId" id="EmailID" autocomplete='off' onchange="return checkmail()" />
+        <label>Password</label><input type="password" name="loginPass" id="LoginPass" />
+        <label>Confirm Password</label><input type="password" name="confirmloginPass" id="ConfirmLoginPass" />
+        <input type="submit" name="submitBt" value="LogIn" />
+        <input type="reset" name="reset" id="reset" value="Reset" />
+        <input type="button" name="abort" value="Abort" onclick="return Abort()" />
+      </form> 
+    </fieldset>
+  </body>
 </html>
